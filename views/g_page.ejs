@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+
+<body>
+    <%- include('partials/nav'); %>
+    <div class="container mt-5 main-content">
+        <h1 class="display-4 text-center">G Test</h1>
+        <p class="lead text-center">G Test Booking Page</p>
+
+        <% if (showBackButton) { %>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-between"
+                    role="alert">
+                    <span><%- message  %></span>
+                    <!-- <a href="/g2_page" class="alert-link">Go Back to G2 Page</a> -->
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+        <!-- Display the initial form for entering a license number -->
+        <!-- <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <form action="/g_page" method="POST">
+                    <div class="form-group">
+                        <label for="licenseNumber">Enter License Number:</label>
+                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber"
+                            placeholder="License Number" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                </form>
+            </div>
+        </div> -->
+
+
+        <!-- Display User Information if user data is not null -->
+        <% if (user && !user.gAppointmentId) { %>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <!-- Displaying User Information in Readonly Form -->
+                <h3>User Information</h3>
+                <form action="/g_page_post" method="POST">
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                            value="<%= user.firstName %>" readonly>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName"
+                            value="<%= user.lastName %>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" class="form-control" id="age" name="age" value="<%= user.age %>" readonly>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="licenseNo">License Number:</label>
+                        <input type="text" class="form-control" id="licenseNo" name="licenseNo"
+                            value="<%= user.licenseNo %>" readonly>
+                    </div> -->
+                    <h3>Car Information</h3>
+                    <div class="form-group">
+                        <label for="carMake">Car Make:</label>
+                        <input type="text" class="form-control" id="carMake" name="carMake"
+                            value="<%= user.carDetails.make %>" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="carModel">Car Model:</label>
+                        <input type="text" class="form-control" id="carModel" name="carModel"
+                            value="<%= user.carDetails.model %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="carYear">Car Year:</label>
+                        <input type="number" class="form-control" id="carYear" name="carYear"
+                            value="<%= user.carDetails.year %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="plateNumber"> Plat Number:</label>
+                        <input type="text" class="form-control" id="plateNumber" name="platNo"
+                            value="<%= user.carDetails.platNo %>" required>
+                    </div>
+                    <input type="hidden" name="testType" value="G">
+                    <h3>Appointment</h3>
+                    <div class="form-group">
+                        <label for="dateInput">Select Date:</label>
+                        <input type="date" class="form-control" id="dateInput" name="appointmentDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeSlots">Available Time Slots:</label>
+                        <select class="form-control" id="timeSlots" name="appointmentTime" required>
+                            <!-- Options will be dynamically populated here -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Update</button>
+                </form>
+            </div>
+        </div>
+        <% }  %>
+
+        <!-- Display User Information if user data is not null -->
+        <% if (user && user.gAppointmentId) { %>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <!-- Displaying User Information in Readonly Form -->
+                <h3>User Information</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                            value="<%= user.firstName %>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName"
+                            value="<%= user.lastName %>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" class="form-control" id="age" name="age" value="<%= user.age %>" readonly>
+                    </div>
+                    <!-- <div class="form-group">
+                                <label for="licenseNo">License Number:</label>
+                                <input type="text" class="form-control" id="licenseNo" name="licenseNo"
+                                    value="<%= user.licenseNo %>" readonly>
+                            </div> -->
+                    <h3>Car Information</h3>
+                    <div class="form-group">
+                        <label for="carMake">Car Make:</label>
+                        <input type="text" class="form-control" id="carMake" name="carMake"
+                            value="<%= user.carDetails.make %>" required readonly>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="carModel">Car Model:</label>
+                        <input type="text" class="form-control" id="carModel" name="carModel"
+                            value="<%= user.carDetails.model %>" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="carYear">Car Year:</label>
+                        <input type="number" class="form-control" id="carYear" name="carYear"
+                            value="<%= user.carDetails.year %>" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="plateNumber"> Plat Number:</label>
+                        <input type="text" class="form-control" id="plateNumber" name="platNo"
+                            value="<%= user.carDetails.platNo %>" required readonly>
+                    </div>
+
+                    <% if (user.appointmentDetails) { %>
+                    <!-- Displaying Appointment Details -->
+                    <h3>Booked G Test Appointment</h3>
+                    <p>Date: <%= user.appointmentDetails.date.toLocaleDateString('en-CA') %></p>
+                    <p>Time: <%= user.appointmentDetails.time %></p>
+
+                    <% } %>
+
+                    <% if (user.testType === "G" && user.comment !== null && user.isPassed !== null) { %>
+                    <h3>Drive Test Result</h3>
+                    <p class="card-text">Comment: <%= user.comment %></p>
+                    <p class="card-text">Status: <%= user.isPassed ? 'PASS' : 'FAIL' %></p>
+                    <% }  %>
+
+                </form>
+            </div>
+        </div> <%}%>
+
+
+    </div>
+
+    <script src="js/getDriverTimeSlot.js">
+    </script> <%- include('partials/footer'); %>
+</body>
+
+</html>

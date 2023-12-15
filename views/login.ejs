@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+
+<body>
+    <%- include('partials/nav'); %>
+
+    <!-- Content -->
+    <div class="container mt-5">
+
+        <h1 class="display-4 text-center">DriveTest Booking Kiosk</h1>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <% if (message) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= message %>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <!-- Login Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Login</h3>
+                        <form id="loginForm" action="/login" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">User Name:</label>
+                                <input name="username" type="text" class="form-control" id="username"
+                                    placeholder="Email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Password:</label>
+                                <input name="password" type="password" class="form-control" id="loginPassword"
+                                    placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Signup Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Sign Up</h3>
+                        <form action="/signup" method="post" id="signupForm">
+                            <div class="mb-3">
+                                <label for="signupName" class="form-label">User Name:</label>
+                                <input type="text" name="username" class=" form-control" id="signupName"
+                                    placeholder="Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="signupPassword" class="form-label">Password:</label>
+                                <input type="password" name="password" class="form-control" id="signupPassword"
+                                    placeholder="Password">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="repeatedPassword" class="form-label">Repeated Password:</label>
+                                <input type="password" name="repeatedPassword" class="form-control"
+                                    id="repeatedPassword" placeholder="Repeat Password">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="userType" class="form-label">User Type:</label>
+                                <select class="form-select" id="userType" name="userType">
+                                    <option value="Driver">Driver</option>
+                                    <option value="Examiner">Examiner</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer'); %>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+
+<body>
+    <%- include('partials/nav'); %>
+    <div class="container mt-5">
+        <h1 class="display-4 text-center">Examiner Page</h1>
+
+        <!-- Driver Information -->
+        <div class="mb-3">
+            <h3 class="mb-2">Driver Information</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="driverName" class="form-label">Driver's Full Name:</label>
+                    <input type="text" id="driverName" name="driverName" class="form-control"
+                        value="<%= `${user.firstName} ${user.lastName}` %>" disabled>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="age" class="form-label">Age:</label>
+                    <input type="number" id="age" name="age" class="form-control" value="<%= user.age %>" disabled>
+                </div>
+
+                <!-- <div class="col-md-6">
+                        <label for="licenseNo" class="form-label">Driver's License Number:</label>
+                        <input type="text" id="licenseNo" name="licenseNo" class="form-control"
+                            value="<%= user.licenseNo %>" disabled>
+                    </div> -->
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="carMake" class="form-label">Car Make:</label>
+                    <input type="text" id="carMake" name="carMake" class="form-control"
+                        value="<%= user.carDetails.make %>" disabled>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="carModel" class="form-label">Car Model:</label>
+                    <input type="text" id="carModel" name="carModel" class="form-control"
+                        value="<%= user.carDetails.model %>" disabled>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="carMake" class="form-label">Car Make:</label>
+                    <input type="text" id="carMake" name="carMake" class="form-control"
+                        value="<%= user.carDetails.make %>" disabled>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="carModel" class="form-label">Car Model:</label>
+                    <input type="text" id="carModel" name="carModel" class="form-control"
+                        value="<%= user.carDetails.model %>" disabled>
+                </div>
+            </div>
+        </div>
+        <form action="/examiner_page" method="post" class="mt-4">
+            <input type="hidden" name="userId" value="<%= user._id %>">
+            <input type="hidden" name="testType" value="<%= user.testType%>">
+            <!-- Examiner Evaluation -->
+            <div class="mb-3">
+                <h3 class="mb-2">Examiner Evaluation</h3>
+
+                <div class="col-md-5">
+                    <div class="mb-3">
+                        <label for="testType" class="form-label">Test Type:</label>
+                        <select id="testType" class="form-select" disabled>
+                            <option value="G2" <% if (user.testType === 'G2') { %>selected<% } %>>G2</option>
+                            <option value="G" <% if (user.testType === 'G') { %>selected<% } %>>G</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="comment" class="form-label">Comment:</label>
+                        <textarea id="comment" name="comment" class="form-control" rows="4"
+                            required><%= user.comment %></textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="isPassed" class="form-label">Pass/Fail:</label>
+                        <select id="isPassed" name="isPassed" class="form-select" required>
+                            <option value="true" <% if (user.isPassed === true) { %>selected<% } %>>Pass</option>
+                            <option value="false" <% if (user.isPassed === false) { %>selected<% } %>>Fail</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    <%- include('partials/footer'); %>
+</body>
+
+</html>

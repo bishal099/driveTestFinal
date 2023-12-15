@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+
+<%- include('partials/head'); %>
+
+<body>
+    <%- include('partials/nav'); %>
+    <div class="wrapper">
+
+        <div class="container mt-5">
+            <h1 class="display-4 text-center mb-4"> Dashboard</h1>
+            <p class="lead text-center mb-4">Candiadate's List </p>
+
+            <!-- Display the list of users -->
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Candidates Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Test Type</th>
+                        <th scope="col">Comment</th>
+                        <th scope="col">Pass/Fail</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% candidateLists.forEach(user => { %>
+                    <tr>
+                        <td><%= user.username %></td>
+                        <td><%= `${user.firstName} ${user.lastName}` %></td>
+                        <td><%= user.age %></td>
+                        <td><%= user.testType %></td>
+                        <td><%= user.comment %></td>
+                        <td>
+                            <% if (user.isPassed) { %>
+                            <button type="button" class="btn btn-success btn-sm">Pass</button>
+                            <% } else { %>
+                            <button type="button" class="btn btn-danger btn-sm">Fail</button>
+                            <% } %>
+                        </td>
+                        <td>
+                            <% if (user.isPassed) { %>
+                            <button class="btn btn-info btn-sm text-white">Order Card</a>
+                                <% } %>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('partials/footer'); %>
+
+</body>
+
+</html>

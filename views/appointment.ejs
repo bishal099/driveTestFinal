@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body class="appointment-body">
+    <%- include('partials/nav'); %>
+
+    <div class="wrapper appointment-wrapper">
+        <!-- i mean this part a bit lower in height, a bit down -->
+        <div class="container mt-5 mb-4">
+            <h1 class="display-4 text-center">Appointment Management</h1>
+            <p class="lead text-center">Manage Appointment Slots</p>
+            <% if (message) { %>
+            <div class="row mt-4">
+                <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-between"
+                        role="alert">
+                        <span><%- message  %></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+            <div class="row mt-4">
+                <div class="col-md-6 offset-md-3">
+                    <form action="/appointment" method="post">
+                        <div class="form-group">
+                            <label for="date">Date:</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                            <br>
+                            <button type="button" class="btn btn-primary" id="showSlots">Show Timeslots</button>
+                        </div>
+
+                        <div id="slotContainer" class="d-flex">
+                            <!-- Slots will be displayed here from backend -->
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/getAvailableSlots.js"></script>
+    <%- include('partials/footer'); %>
+</body>
+
+</html>

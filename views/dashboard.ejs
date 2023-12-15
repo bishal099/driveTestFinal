@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+
+<body>
+    <%- include('partials/nav'); %>
+
+    <div class="container text-center main-content" style="margin-top: 3%;">
+        <h1 class="display-4">Dashboard</h1>
+
+        <% if (user.comment !== null && user.isPassed !== null) { %>
+
+        <div class="result-card mt-4">
+            <div class="card-header">
+                DriveTest Result
+            </div>
+            <div class="card-body">
+                <p class="card-title">Username: <%= user.username%></p>
+                <p class="card-text">Comment: <%= user.comment %></p>
+                <p class="card-text">Status: <%= user.isPassed ? 'PASS' : 'FAIL' %></p>
+
+                <!-- Animated result message -->
+                <div class="result-message <% if (user.isPassed) { %>congrats<% } else { %>fail<% } %>">
+                    <%= user.isPassed ? `Congratulations! You have passed ${user.testType}` : `Sorry, you have failed. ${user.testType}` %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+        <div style="margin-top: 10%;">
+            <h3>You can book G2/G drive test from this Kiosk</h3>
+            <span>Posted By: DriveTest Centre</span>
+        </div>
+    </div>
+
+    <%- include('partials/footer'); %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultMessage = document.querySelector('.result-message');
+            if (resultMessage) {
+                setTimeout(() => {
+                    resultMessage.classList.add('show');
+                }, 500);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

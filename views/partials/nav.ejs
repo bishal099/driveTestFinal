@@ -1,0 +1,53 @@
+ <!-- Navigation Header -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+     <div class="container">
+         <a class="navbar-brand custom-navbar-brand" href="/dashboard">Book DriveTest</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+             <ul class="navbar-nav nav11">
+                 <li class="nav-item">
+                     <a class="nav-link" href="/">Home</a>
+                 </li>
+                 <!-- check is authenticated condition which was in use method in app.js-->
+                 <% if (isAuthenticated) { %>
+                 <% if (userType === 'Driver') { %>
+                 <!-- Display links only if user is authenticated and is a Driver -->
+                 <li class="nav-item">
+                     <a class="nav-link" href="/dashboard">Dashboard</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/g2_page">G2 Test</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/g_page">G Test</a>
+                 </li>
+                 <% } else if (userType === 'Admin') { %>
+                 <!-- Display if the user is authenticated and is an Admin -->
+                 <li class="nav-item">
+                     <a class="nav-link" href="/admin_dashboard">Admin</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/appointment">Appointment</a>
+                 </li>
+                 <% }else if (userType === 'Examiner') { %>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/examiner_dashboard">Examiner</a>
+                 </li>
+                 <% } %>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#" id="logoutId">Logout</a>
+                 </li>
+                 <% } else { %>
+                 <!-- Display not authenticated -->
+                 <li class="nav-item">
+                     <a class="nav-link" href="/login">Login</a>
+                 </li>
+                 <% } %>
+             </ul>
+         </div>
+     </div>
+ </nav>

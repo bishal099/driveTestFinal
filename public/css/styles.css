@@ -1,0 +1,135 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  min-height: 100%;
+
+}
+
+.wrapper {
+  min-height: calc(100vh - 6.25rem);
+  margin-bottom: -6.25rem;
+  padding-bottom: 6.25rem;
+}
+
+form label {
+  margin-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+#userInformationSection {
+  display: none;
+}
+
+/* Added Custom Background Color & Hover to Header & Footer Starts */
+.custom-navbar {
+  background-color: #003478e6 !important;
+}
+
+.custom-navbar-brand {
+  color: white !important;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+  border-radius: 4px;
+}
+
+.navbar-nav .nav-link:hover {
+  border-radius: 10px;
+  background-color: #0693e3 !important;
+}
+
+.custom-footer {
+  background-color: #003478e6 !important;
+  color: white !important;
+}
+
+.main-content {
+  min-height: calc(80vh - 9vh);
+}
+
+.slot-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.slot-button {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.appointment-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.appointment-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-card {
+  max-width: 400px;
+  margin: auto;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.result-card:hover {
+  transform: scale(1.05);
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.result-message {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.result-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.congrats {
+  color: #28a745;
+}
+
+.fail {
+  color: #dc3545;
+}
+
+
+/* Added Custom Background Color & Hover to Header & Footer Ends */
