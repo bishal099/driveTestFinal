@@ -196,6 +196,8 @@ class Controller {
 
                     // Attach appointment details to the g2Data object
                     g2Data.appointmentDetails = appointmentDetails;
+
+                    console.log(g2Data.appointmentDetails);
                 }
 
                 res.render('g2_page', {
@@ -564,14 +566,18 @@ class Controller {
             let users;
             if (testType === 'All') {
                 users = await userModel.find({
-                    testType: {
-                        $in: ['G2', 'G']
-                    },
-                }).exec();
+                        testType: {
+                            $in: ['G2', 'G']
+                        },
+                    })
+                    .populate('appointmentId')
+                    .exec();
             } else {
                 users = await userModel.find({
-                    testType,
-                }).exec();
+                        testType,
+                    })
+                    .populate('appointmentId')
+                    .exec();
             }
 
             res.render('examiner_dashboard', {

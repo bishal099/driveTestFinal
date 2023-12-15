@@ -81,7 +81,7 @@
             <div class="col-md-6 offset-md-3">
                 <!-- Displaying Appointment Details -->
                 <h3>Booked G2 Test Appointment</h3>
-                <p>Date: <%= g2Data.appointmentDetails.date.toLocaleDateString('en-CA') %></p>
+                <p>Date: <%= g2Data.appointmentDetails.date.toISOString().substring(0, 10) %></p>
                 <p>Time: <%= g2Data.appointmentDetails.time %></p>
             </div>
         </div>

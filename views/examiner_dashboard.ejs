@@ -34,6 +34,8 @@
                     <tr>
                         <th scope="col">Username</th>
                         <th scope="col">Test Type</th>
+                        <th scope="col">Appointment Date</th>
+                        <th scope="col">Appointment Time</th>
                         <th scope="col">Comment</th>
                         <th scope="col">Pass/Fail</th>
                         <th scope="col">Action</th>
@@ -44,6 +46,9 @@
                     <tr>
                         <td><%= user.username %></td>
                         <td><%= user.testType %></td>
+                        <td><%= user.appointmentId ? user.appointmentId.date.toISOString().substring(0, 10) : 'N/A' %>
+                        </td>
+                        <td><%= user.appointmentId ? user.appointmentId.time : 'N/A' %></td>
                         <td><%= user.comment %></td>
                         <td>
                             <% if (user.isPassed === true) { %>

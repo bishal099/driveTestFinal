@@ -160,7 +160,7 @@
                     <% if (user.appointmentDetails) { %>
                     <!-- Displaying Appointment Details -->
                     <h3>Booked G Test Appointment</h3>
-                    <p>Date: <%= user.appointmentDetails.date.toLocaleDateString('en-CA') %></p>
+                    <p>Date: <%= user.appointmentDetails.date.toISOString().substring(0, 10) %></p>
                     <p>Time: <%= user.appointmentDetails.time %></p>
 
                     <% } %>
